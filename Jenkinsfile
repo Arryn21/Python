@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Clone the repository
+                // Checkout the repository from the default branch (master/main)
                 checkout scm
             }
         }
@@ -12,10 +12,10 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 // Install dependencies
-                sh '''
-                python3 -m venv venv
-                source venv/bin/activate
-                pip install -r requirements.txt
+                bat '''
+                python -m venv venv
+                call venv\\Scripts\\activate.bat
+                pip install pytest pytest-html
                 '''
             }
         }
@@ -23,8 +23,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 // Run pytest and generate an HTML report
-                sh '''
-                source venv/bin/activate
+                bat '''
+                call venv\\Scripts\\activate.bat
                 pytest --html=report.html
                 '''
             }
