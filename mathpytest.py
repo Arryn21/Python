@@ -1,3 +1,4 @@
+#functions
 class MathUtils:
 
     def add(a, b):
