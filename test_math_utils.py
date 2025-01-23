@@ -3,10 +3,10 @@ import pytest
 from mathpytest import MathUtils
 
 @pytest.mark.parametrize("a, b, expected", [
-    (1, 2, 3),
+    (4, 5, 9),
     (0, 0, 0),
     (-1, 1, 0),
-    (100, 200, 300)
+    (1000, 2000, 3000)
 ])
 def test_add(a, b, expected):
     assert MathUtils.add(a, b) == expected
